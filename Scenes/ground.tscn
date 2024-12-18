@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cptndguj4ap6s"]
+
+[ext_resource type="Texture2D" uid="uid://dy1hkcjf0esbs" path="res://Assets/images/field/base.png" id="1_0qlc5"]
+[ext_resource type="Script" path="res://Scenes/ground.gd" id="1_l0o7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5prtx"]
+size = Vector2(336, 10)
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_l0o7j")
+
+[node name="Ground1" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground1"]
+texture = ExtResource("1_0qlc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+position = Vector2(0, -49)
+shape = SubResource("RectangleShape2D_5prtx")
+
+[node name="Ground2" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+position = Vector2(336, 0)
+texture = ExtResource("1_0qlc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(336, -49)
+shape = SubResource("RectangleShape2D_5prtx")
+
+[connection signal="body_entered" from="Ground1" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Ground2" to="." method="_on_body_entered"]
